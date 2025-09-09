@@ -13,7 +13,8 @@ RUN apk add --no-cache \
     linux-headers \
     meson \
     ninja \
-    radare2
+    radare2 \
+    radare2-dev
 
 WORKDIR /build
 
