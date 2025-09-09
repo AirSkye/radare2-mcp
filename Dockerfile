@@ -17,9 +17,7 @@ RUN apk add --no-cache \
 WORKDIR /build
 # Install radare2 (for build only)
 RUN git clone --depth 1 https://github.com/radareorg/radare2.git && \
-    cd radare2 && \
-    ./sys/install.sh && \
-    cd .. 
+    ./radare2/sys/install.sh
 
 RUN git clone --depth 1 https://github.com/radareorg/radare2-mcp.git && \
     cd radare2-mcp && \
