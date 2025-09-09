@@ -17,8 +17,8 @@ RUN apk add --no-cache \
 WORKDIR /build
 # Install radare2 (for build only)
 RUN git clone --depth 1 https://github.com/radareorg/radare2.git && \
-    sed -i '/static ssize_t process_vm_readv/d; /static ssize_t process_vm_writev/d' radare2/libr/io/p/io_pvm.c && \
-    ./radare2/sys/install.sh
+    ./radare2/configure --disable-io_pvm && \
+    make && make install
 
 RUN git clone --depth 1 https://github.com/radareorg/radare2-mcp.git && \
     cd radare2-mcp && \
