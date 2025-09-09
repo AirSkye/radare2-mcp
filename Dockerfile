@@ -12,11 +12,10 @@ RUN apk add --no-cache \
     openssl-dev \
     linux-headers \
     meson \
-    ninja
+    ninja \
+    radare2
 
 WORKDIR /build
-# Install radare2 (for build only)
-RUN apt-get update && apt-get install -y radare2
 
 RUN git clone --depth 1 https://github.com/radareorg/radare2-mcp.git && \
     cd radare2-mcp && \
