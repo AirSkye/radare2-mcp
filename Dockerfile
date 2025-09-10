@@ -18,7 +18,10 @@ RUN apk add --no-cache \
 
 WORKDIR /build
 
-RUN r2pm -Uci r2mcp
+RUN git clone --depth 1 https://github.com/radareorg/radare2-mcp.git && \
+    cd radare2-mcp && \
+    make && \
+    cp r2mcp /usr/local/bin/
 
 # Create /data volume for binary analysis
 WORKDIR /data
@@ -28,7 +31,7 @@ VOLUME ["/data"]
 ENV R2MCP_DEBUG=0
 
 # Simply set the entrypoint
-ENTRYPOINT ["r2pm", "-r", "mcp"]
+ENTRYPOINT ["/usr/local/bin/r2mcp"]
 
 # Instructions for users:
 # IMPORTANT: Always run with `-i` flag to keep stdin open:
