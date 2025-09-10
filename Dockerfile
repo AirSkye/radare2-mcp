@@ -12,7 +12,7 @@ RUN apt update && apt install -y \
     libssl-dev \
     meson \
     ninja-build \
-    node \
+    nodejs \
     npm
 
 WORKDIR /build
