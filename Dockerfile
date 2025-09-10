@@ -12,12 +12,15 @@ RUN apk add --no-cache \
     openssl-dev \
     linux-headers \
     meson \
-    ninja \
-    radare2 \
-    radare2-dev
+    ninja
 
 WORKDIR /build
-
+# Install radare2 (for build only)
+RUN git clone --depth 1 https://github.com/radareorg/radare2.git && \
+    cd radare2 && \
+    ./sys/install.sh && \
+    cd .. 
+    
 RUN git clone --depth 1 https://github.com/AirSkye/radare2-mcp.git && \
     cd radare2-mcp && \
     ./configure && \
