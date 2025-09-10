@@ -1,30 +1,26 @@
-FROM alpine:latest AS builder
-
-# 使用国内源
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+FROM debian AS builder
 
 # Install build dependencies
-RUN apk add --no-cache \
-    build-base \
+RUN apt update && apt install -y \
+    build-essential \
     git \
-    pkgconfig \
+    pkg-config \
     python3 \
-    libc-dev \
-    file-dev \
+    libc6-dev \
+    libmagic-dev \
     libzip-dev \
-    openssl-dev \
-    linux-headers \
+    libssl-dev \
     meson \
-    ninja
+    ninja-build
 
 WORKDIR /build
 # Install radare2 (for build only)
-RUN git clone --depth 1 https://xget.xi-xu.me/gh/radareorg/radare2.git && \
+RUN git clone --depth 1 https://github.com/radareorg/radare2.git && \
     cd radare2 && \
     ./sys/install.sh && \
     cd .. 
 
-RUN git clone --depth 1 https://xget.xi-xu.me/gh/AirSkye/radare2-mcp.git && \
+RUN git clone --depth 1 https://github.com/AirSkye/radare2-mcp.git && \
     cd radare2-mcp && \
     ./configure && \
     make && \
