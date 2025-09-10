@@ -20,6 +20,7 @@ WORKDIR /build
 
 RUN git clone --depth 1 https://github.com/radareorg/radare2-mcp.git && \
     cd radare2-mcp && \
+    ./configure && \
     make && \
     cp r2mcp /usr/local/bin/
 
