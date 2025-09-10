@@ -11,7 +11,9 @@ RUN apt update && apt install -y \
     libzip-dev \
     libssl-dev \
     meson \
-    ninja-build
+    ninja-build \
+    node \
+    npm
 
 WORKDIR /build
 # Install radare2 (for build only)
