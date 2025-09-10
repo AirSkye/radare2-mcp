@@ -19,7 +19,7 @@ RUN apk add --no-cache \
 WORKDIR /build
 
 RUN git clone --depth 1 https://github.com/juergenhoetzel/radare2-mcp/tree/makefile-fix.git && \
-    cd radare2-mcp && \
+    cd makefile-fix && \
     ./configure && \
     make && \
     cp r2mcp /usr/local/bin/
